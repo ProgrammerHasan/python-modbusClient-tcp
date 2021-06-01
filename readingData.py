@@ -17,18 +17,17 @@ def set_interval(func, sec):
     return timer
 
 
-client = ModbusClient('COM4')
+client = ModbusClient('WW2')
 client.baudrate = 9600
 client.parity = Parity.none
 client.stopbits = Stopbits.one
 
 client.connect()
 
-registerAddress = 0  # int(input("Register Address?: "))
+registerAddress = 0
 
 
 def read():
-    # Channel 1 MM Converter: 84.0909091‬ (Divide value by this)
     input_register = client.read_holdingregisters(registerAddress, 8)
     print(input_register)
 
